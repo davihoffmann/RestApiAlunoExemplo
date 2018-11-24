@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -32,6 +33,7 @@ public class AlunoRestController {
          */
     }
 
+    @Secured("ROLE_USER")
     @ApiOperation("Lista de alunos")
     @RequestMapping(method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -61,6 +63,7 @@ public class AlunoRestController {
         }
     }
 
+    @Secured("ROLE_MANAGER")
     @ApiOperation("Atualiza as informações do aluno pelo id")
     @PutMapping("/{id}")
     public ResponseEntity<AlunoResource> update(@PathVariable Long id, @RequestBody Aluno aluno) {
