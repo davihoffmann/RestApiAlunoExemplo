@@ -12,7 +12,8 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-@RestController("/aluno")
+@RestController
+@RequestMapping("/alunos")
 public class AlunoRestController {
 
     @Autowired
